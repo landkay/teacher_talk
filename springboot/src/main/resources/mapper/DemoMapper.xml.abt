@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lincomb.manager.mapper.TLdAdMapper" >
+    <resultMap id="BaseResultMap" type="com.lincomb.manager.models.TLdAd" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="ad_position_id" property="adPositionId" jdbcType="INTEGER" />
+        <result column="ad_name" property="adName" jdbcType="VARCHAR" />
+        <result column="airingno" property="airingno" jdbcType="INTEGER" />
+        <result column="enabletime" property="enabletime" jdbcType="TIMESTAMP" />
+        <result column="disabletime" property="disabletime" jdbcType="TIMESTAMP" />
+        <result column="href" property="href" jdbcType="VARCHAR" />
+        <result column="disabled" property="disabled" jdbcType="VARCHAR" />
+        <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+        <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+        <result column="is_valid" property="isValid" jdbcType="VARCHAR" />
+        <result column="text1" property="text1" jdbcType="VARCHAR" />
+        <result column="text2" property="text2" jdbcType="VARCHAR" />
+        <result column="display_type" property="displayType" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+    id, ad_position_id, ad_name, airingno, enabletime, disabletime, href, disabled, createtime, 
+    updatetime, is_valid, text1, text2,display_type
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from t_ld_ad
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+   DELETE  FROM t_ld_ad 
+    where id = #{id}
+  </delete>
+    <insert id="insert" parameterType="com.lincomb.manager.models.TLdAd" useGeneratedKeys="true" keyProperty="id">
+    insert into t_ld_ad (id, ad_position_id, ad_name, 
+      airingno, enabletime, disabletime, 
+      href, disabled, createtime, 
+      updatetime, is_valid, text1, display_type,
+      text2)
+    values (#{id,jdbcType=INTEGER}, #{adPositionId,jdbcType=INTEGER}, #{adName,jdbcType=VARCHAR}, 
+      #{airingno,jdbcType=INTEGER}, #{enabletime,jdbcType=TIMESTAMP}, #{disabletime,jdbcType=TIMESTAMP}, 
+      #{href,jdbcType=VARCHAR}, #{disabled,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{isValid,jdbcType=VARCHAR}, #{text1,jdbcType=VARCHAR}, 
+      #{displayType,jdbcType=VARCHAR},#{text2,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" useGeneratedKeys="true" parameterType="com.lincomb.manager.models.TLdAd" >
+        insert into t_ld_ad
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="adPositionId != null" >
+                ad_position_id,
+            </if>
+            <if test="adName != null" >
+                ad_name,
+            </if>
+            <if test="airingno != null" >
+                airingno,
+            </if>
+            <if test="enabletime != null" >
+                enabletime,
+            </if>
+            <if test="disabletime != null" >
+                disabletime,
+            </if>
+            <if test="href != null" >
+                href,
+            </if>
+            <if test="disabled != null" >
+                disabled,
+            </if>
+            <if test="createtime != null" >
+                createtime,
+            </if>
+            <if test="updatetime != null" >
+                updatetime,
+            </if>
+            <if test="isValid != null" >
+                is_valid,
+            </if>
+            <if test="text1 != null" >
+                text1,
+            </if>
+            <if test="text2 != null" >
+                text2,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="adPositionId != null" >
+                #{adPositionId,jdbcType=INTEGER},
+            </if>
+            <if test="adName != null" >
+                #{adName,jdbcType=VARCHAR},
+            </if>
+            <if test="airingno != null" >
+                #{airingno,jdbcType=INTEGER},
+            </if>
+            <if test="enabletime != null" >
+                #{enabletime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="disabletime != null" >
+                #{disabletime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="href != null" >
+                #{href,jdbcType=VARCHAR},
+            </if>
+            <if test="disabled != null" >
+                #{disabled,jdbcType=VARCHAR},
+            </if>
+            <if test="createtime != null" >
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null" >
+                #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isValid != null" >
+                #{isValid,jdbcType=VARCHAR},
+            </if>
+            <if test="text1 != null" >
+                #{text1,jdbcType=VARCHAR},
+            </if>
+            <if test="text2 != null" >
+                #{text2,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.lincomb.manager.models.TLdAd" >
+        update t_ld_ad
+        <set >
+            <if test="adPositionId != null" >
+                ad_position_id = #{adPositionId,jdbcType=INTEGER},
+            </if>
+            <if test="adName != null" >
+                ad_name = #{adName,jdbcType=VARCHAR},
+            </if>
+            <if test="airingno != null" >
+                airingno = #{airingno,jdbcType=INTEGER},
+            </if>
+            <if test="enabletime != null" >
+                enabletime = #{enabletime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="disabletime != null" >
+                disabletime = #{disabletime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="href != null" >
+                href = #{href,jdbcType=VARCHAR},
+            </if>
+            <if test="disabled != null" >
+                disabled = #{disabled,jdbcType=VARCHAR},
+            </if>
+            <if test="createtime != null" >
+                createtime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null" >
+                updatetime = #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isValid != null" >
+                is_valid = #{isValid,jdbcType=VARCHAR},
+            </if>
+            <if test="text1 != null" >
+                text1 = #{text1,jdbcType=VARCHAR},
+            </if>
+            <if test="displayType != null" >
+                display_type = #{displayType,jdbcType=VARCHAR},
+            </if>
+            <if test="text2 != null" >
+                text2 = #{text2,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.lincomb.manager.models.TLdAd" >
+    update t_ld_ad
+    set ad_position_id = #{adPositionId,jdbcType=INTEGER},
+      ad_name = #{adName,jdbcType=VARCHAR},
+      airingno = #{airingno,jdbcType=INTEGER},
+      enabletime = #{enabletime,jdbcType=TIMESTAMP},
+      disabletime = #{disabletime,jdbcType=TIMESTAMP},
+      href = #{href,jdbcType=VARCHAR},
+      disabled = #{disabled,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      is_valid = #{isValid,jdbcType=VARCHAR},
+      text1 = #{text1,jdbcType=VARCHAR},
+      text2 = #{text2,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <select id="queryAdList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT
+        ad.id,
+        ad.ad_name as adName,
+        ap.pos_name as posName,
+        ad.airingno,
+        ad.enabletime,
+        ad.disabletime,
+        ad.disabled,
+        ad.text1
+        FROM
+        t_ld_ad ad
+        left JOIN t_ld_ad_position ap ON ad.ad_position_id = ap.id
+        <where>
+            <if test="isValid != null">
+                and ad.is_valid = #{isValid}
+            </if>
+            <if test="adName != null">
+                and ad.ad_name like concat('%',#{adName},'%')
+            </if>
+            <if test="mediaType != null">
+                and ap.media_type like concat('%',#{mediaType},'%')
+            </if>
+            <if test="enabletime != null and enabletime !='' ">
+                and str_to_date(ad.enabletime,'%Y-%m-%d') &gt;= str_to_date(#{enabletime},'%Y-%m-%d')
+            </if>
+            <if test="disabletime != null and disabletime !='' ">
+                and str_to_date(ad.enabletime,'%Y-%m-%d') &lt;= str_to_date(#{disabletime},'%Y-%m-%d')
+            </if>
+            <if test="posName != null">
+                and ap.pos_name = #{posName}
+            </if>
+            <if test="text1 != null and text1 !='' ">
+                and ad.text1 = #{text1}
+            </if>
+        </where>
+        order by ad.enabletime desc
+    </select>
+    <select id="queryByAiringno" resultType="java.lang.Integer">
+  	select count(1) from t_ld_ad
+  	where airingno = #{airingno}
+  	and is_valid = "Y"
+  </select>
+</mapper>
