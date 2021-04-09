@@ -5,10 +5,10 @@ import com.landkay.springboot.model.response.R;
 import com.landkay.springboot.service.ILoginLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -22,6 +22,7 @@ import java.util.HashMap;
  * @date 2018/12/2714:08
  */
 @Controller
+@CrossOrigin(origins = {"http://127.0.0.1"}, maxAge = 30000)
 public class HomeController {
 
     @Autowired

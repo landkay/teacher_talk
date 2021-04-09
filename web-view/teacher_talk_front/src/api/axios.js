@@ -1,7 +1,7 @@
 
 import axios from 'axios'
 
-axios.defaults.baseURL = '/ips'
+axios.defaults.baseURL = process.env.VUE_APP_IPS_API_URL;
 
 export function post(url, data) {
 

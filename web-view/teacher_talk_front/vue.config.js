@@ -1,4 +1,6 @@
 module.exports = {
+    publicPath: process.env.VUE_APP_IPS_PUBLIC_PATH,
+    outputDir: 'ips',
     lintOnSave: false,
     devServer: {
         hot: true,

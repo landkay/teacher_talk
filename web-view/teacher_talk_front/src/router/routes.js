@@ -4,7 +4,7 @@ import RecordList from '@/views/RecordList'
 
 export default [
  {
-   path: '/',
+   path: '/home',
    name: 'Home',
    component: Home,
    meta: {
@@ -17,5 +17,8 @@ export default [
    meta: {
      title: '日历'
    }
+ }, {
+   path: "*",
+   redirect: "/home"
  }
 ]
