@@ -30,7 +30,7 @@ public class BaiDuScheduled {
      * @Date 10:38 2018/8/2
      * @return 
      **/
-    @Scheduled(cron = "0/10 * * * * ?")
+//    @Scheduled(cron = "0/10 * * * * ?")
     public void pushDataScheduled() {
 
         String url = "https://mbd.baidu.com/newspage/data/landingsuper?context=%7B%22nid%22%3A%22news_9590297299213189222%22%7D&n_type=1&p_from=3";

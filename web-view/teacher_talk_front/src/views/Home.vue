@@ -26,8 +26,9 @@ export default {
       menus: [{name: '工作日志', ico: '', path: '/record_list'}, {name: '项目数据', ico: '', path: '/'}]
     }
   },
-  mounted() {
-    console.log(1)
+  async mounted() {
+    const result = await this.$post('/saveLoginLog');
+    console.log(result);
   }
 }
 </script>

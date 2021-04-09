@@ -15,6 +15,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @ComponentScan(basePackages = "com.landkay.springboot")
 @EnableScheduling
 @MapperScan("com.landkay.springboot.dao")
+@MapperScan("com.landkay.springboot.mapper")
 /**
  * Description // springboot 启动类
  * @author landkay
