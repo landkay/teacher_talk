@@ -44,8 +44,8 @@ public class UserController {
 
         //check requestParams
         if (null == user.getId()){
-            userResponse.setCode(ResponseCodeConstant.PARAMS_ISNULL.getCode());
-            userResponse.setMsg(ResponseCodeConstant.PARAMS_ISNULL.getMsg());
+            userResponse.setCode(ResponseCodeConstant.PARAMS_IS_NULL.getCode());
+            userResponse.setMsg(ResponseCodeConstant.PARAMS_IS_NULL.getMsg());
             return userResponse;
         }
         try {
