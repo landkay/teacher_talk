@@ -2,7 +2,7 @@ package com.landkay.springboot.constant;
 
 public enum ResponseCodeConstant {
 
-    SUCCESS("200", "成功"),
+    SUCCESS("00000", "成功"),
     PARAMS_ISNULL("41000", "参数为空"),
     ERROR("50000", "系统异常");
 

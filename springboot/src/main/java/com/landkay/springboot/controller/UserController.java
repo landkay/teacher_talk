@@ -5,6 +5,10 @@ import com.landkay.springboot.constant.ResponseCodeConstant;
 import com.landkay.springboot.model.User;
 import com.landkay.springboot.model.response.UserInsertResponse;
 import com.landkay.springboot.model.response.UserResponse;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/user")
+@Api(value = "用户管理模块", tags = "用户管理相关的接口")
 /**
  * Description //TODO
  * @param
@@ -26,8 +31,13 @@ public class UserController {
     //@Autowired
     //UserFeign userFeign;
 
+    //方法参数说明，name参数名；value参数说明，备注；dataType参数类型；required 是否必传；defaultValue 默认值
+    @ApiImplicitParams({@ApiImplicitParam(name = "user", value = "用户信息对象")})
+    //说明是什么方法(可以理解为方法注释)
+    @ApiOperation(value = "查询用户信息接口", notes = "查询用户信息接口")
     @RequestMapping(value = "/query/userInfo", method = RequestMethod.GET)
-    public UserResponse queryUserInfo(User user) {
+    @ResponseBody
+    public UserResponse queryUserInfo(@RequestBody User user) {
 
         UserResponse userResponse = new UserResponse();
         User result = new User();

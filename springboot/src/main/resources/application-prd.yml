@@ -4,3 +4,6 @@ spring:
   #username : root
   #password : mymysql
   #driverClassName : com.mysql.jdbc.Driver
+
+swagger:
+  enable: false

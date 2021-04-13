@@ -30,12 +30,12 @@ public class MainInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
                            ModelAndView modelAndView) throws Exception {
-        log.info("================请求完成后 ===========");
+        log.info("================请求中 ===========");
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
                                 Exception ex) throws Exception {
-        log.info("============视图渲染后====");
+        log.info("============请求完成后====");
     }
 }

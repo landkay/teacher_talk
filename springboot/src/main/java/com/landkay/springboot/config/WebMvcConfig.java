@@ -8,21 +8,34 @@ import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author 90818
- * @Title: WebAppConfig
- * @ProjectName springboot
- * @Description: TODO
- * @date 2018/8/215:51
+ *
+ */
+/*@Configuration
+public class WebMvcConfig extends WebMvcConfigurerAdapter {
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+
+        registry.addResourceHandler("swagger-ui.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
+
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
+    }
+}*/
+
+/**
+ * 消除警告的第二种配置选择
+ * @author ramostear
+ * @create-time 2019/4/7 0007-4:10
  */
 @Configuration
-public class WebAppConfig extends WebMvcConfigurationSupport {
+public class WebMvcConfig extends WebMvcConfigurationSupport {
 
     @Bean
     MainInterceptor getMainInterceptor() {
@@ -34,6 +47,28 @@ public class WebAppConfig extends WebMvcConfigurationSupport {
 
         registry.addInterceptor(getMainInterceptor()).addPathPatterns("/**");
         super.addInterceptors(registry);
+    }
+
+    @Override
+    public void configurePathMatch(PathMatchConfigurer configurer) {
+        super.configurePathMatch(configurer);
+        configurer.setUseSuffixPatternMatch(false);
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**")
+                .addResourceLocations("classpath:/static/")
+                .addResourceLocations("classpath:/META-INF/resources/")
+                .addResourceLocations("classpath:/public/")
+                .addResourceLocations("classpath:/resources/");
+
+        /*registry.addResourceHandler("swagger-ui.html")
+                .addResourceLocations("classpath:/META-INF/resources/");*/
+       /* registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");*/
+
+        super.addResourceHandlers(registry);
     }
 
     @Bean
@@ -50,4 +85,5 @@ public class WebAppConfig extends WebMvcConfigurationSupport {
         converter.setSupportedMediaTypes(fastMediaTypes);
         return new HttpMessageConverters(converter);
     }
+
 }
